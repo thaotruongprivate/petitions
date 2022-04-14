@@ -11,12 +11,13 @@ services:
     environment:
       - DATABASE_URL
       - API_TOKEN
-  db:
+
+  database:
     image: postgres:10
     ports:
-      - "54322:5432"
+      - "54320:5432"
     volumes:
-      - db_data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data:rw
 
 volumes:
   db_data:
