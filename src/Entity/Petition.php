@@ -10,8 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Petition
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column(type: 'integer')]
+    #[ORM\GeneratedValue(strategy: 'IDENTITY')]
+    #[ORM\Column(type: 'integer', nullable: false)]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -23,8 +23,12 @@ class Petition
     #[ORM\Column(type: 'string', length: 100)]
     private $country;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'datetime', options: ['default'=>'CURRENT_TIMESTAMP'])]
     private $date_created;
+
+    public function __construct() {
+        $this->date_created = new \DateTime();
+    }
 
     public function getId(): ?int
     {
