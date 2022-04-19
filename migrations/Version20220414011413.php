@@ -21,7 +21,7 @@ final class Version20220414011413 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SEQUENCE petition_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
-        $this->addSql('CREATE TABLE petition (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, description TEXT NOT NULL, country VARCHAR(100) NOT NULL, date_created TIMESTAMP(0) DEFAULT CURRENT_TIMESTAMP NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE petition (id INT NOT NULL, name VARCHAR(255) NOT NULL, description TEXT NOT NULL, country VARCHAR(100) NOT NULL, date_created TIMESTAMP(0) DEFAULT CURRENT_TIMESTAMP NOT NULL, PRIMARY KEY(id))');
     }
 
     public function down(Schema $schema): void
