@@ -12,19 +12,19 @@ class Petition
     #[ORM\Id]
     #[ORM\GeneratedValue(strategy: 'IDENTITY')]
     #[ORM\Column(type: 'integer', nullable: false)]
-    private $id;
+    private ?int $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $name;
+    private ?string $name;
 
     #[ORM\Column(type: 'text')]
-    private $description;
+    private ?string $description;
 
     #[ORM\Column(type: 'string', length: 100)]
-    private $country;
+    private ?string $country;
 
     #[ORM\Column(type: 'datetime', options: ['default'=>'CURRENT_TIMESTAMP'])]
-    private $date_created;
+    private \DateTime $date_created;
 
     public function __construct() {
         $this->date_created = new \DateTime();
@@ -80,6 +80,12 @@ class Petition
     {
         $this->date_created = $date_created;
 
+        return $this;
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
         return $this;
     }
 }
